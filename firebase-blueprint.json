@@ -1,0 +1,59 @@
+{
+  "entities": {
+    "registrations": {
+      "title": "Registration",
+      "description": "Athlete race registration data",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string" },
+        "idNumber": { "type": "string" },
+        "birthDay": { "type": "string" },
+        "birthMonth": { "type": "string" },
+        "birthYear": { "type": "string" },
+        "email": { "type": "string" },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["fullName", "idNumber", "birthDay", "birthMonth", "birthYear", "email"]
+    },
+    "users": {
+        "title": "User",
+        "description": "User profile data",
+        "type": "object",
+        "properties": {
+            "uid": { "type": "string" },
+            "displayName": { "type": "string" },
+            "email": { "type": "string" },
+            "photoURL": { "type": "string" },
+            "createdAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["uid", "email"]
+    },
+    "gallery_photos": {
+        "title": "GalleryPhoto",
+        "description": "Historical gallery image stored as base64 data URL",
+        "type": "object",
+        "properties": {
+            "photoId": { "type": "string" },
+            "filename": { "type": "string" },
+            "dataUrl": { "type": "string" },
+            "updatedAt": { "type": "string", "format": "date-time" }
+        },
+        "required": ["photoId", "dataUrl"]
+    }
+  },
+  "firestore": {
+    "registrations/{registrationId}": {
+      "schema": "registrations",
+      "description": "Collection of race registrations"
+    },
+    "users/{userId}": {
+        "schema": "users",
+        "description": "Collection of user profiles"
+    },
+    "gallery_photos/{photoId}": {
+        "schema": "gallery_photos",
+        "description": "Collection of community and historical race photographs"
+    }
+  }
+}
